@@ -12,39 +12,11 @@
 <link rel="icon" type="image/ico" href="https://cdn.www.hlz.ink/favicon.ico">
 </head>
 <script>
-    let a, r;
-    $ajax({
-        method: "get",
-        url: "https://hk.20021110.xyz/api.php",
-        data: {
-            id: "all",
-            t: "pc"
-        },
-        // 后端返回 JOSON
-        // 1. sus 是否成功插入
-        // 2. message 插入成功后的信息
-        success: function(result) {
-            $('loading').style.display = 'none';
-            r = result;
-            a = JSON.parse(result);
-            a.s = parseInt(a.s)
-
-            // AID = a.s;
-            a.s = parseInt( Math.random()*a.s + 1 );
-
-            $('outter').style.backgroundImage = 'url(https://hk.20021110.xyz/picture/pc/' + a.s.toString() + '.webp';
-            $('inputID').value = a.s;
-        },
-        error: function(msg) {
-        }
-    })
-    window.onload = function (){
-    }
+    init();
 </script>
 <body>
     <div class="tools">
         <a href="https://tools.hlz.ink" target="_blank">
-            <!-- <span class="grid-3x3-gap-fill" style="font-size: 21px; color: #688095"></span> -->
             <img src="static/grid.svg" alt="" width="21px" height="21px" title="Bootstrap" >
             <span style="color:#515151;">Tools</span>
         </a>
@@ -110,16 +82,13 @@
 </body>
 <footer class="myfooter">
     <span style=" margin-bottom: 0px;  margin-left: 1.5em; display: inline-block;">
-        <a href="https://hlz.ink/webvpn.html#About" style="color: #5f6368" target="_blank">About</a>
+        <a href="https://hlz.ink/randpic.html#About" style="color: #5f6368" target="_blank">About</a>
     </span>
     <span style="margin-bottom: 0px;  margin-left: 1.5em; display: inline-block;">
-        <a href="https://hlz.ink/webvpn.html#Terms" style="color: #5f6368" target="_blank">Terms</a>
+        <a href="https://hlz.ink/randpic.html#Terms" style="color: #5f6368" target="_blank">Terms</a>
     </span>
     <span style="margin-bottom: 0px;  margin-right: 1.3em; display: inline-block; float: right!important;">
-        Powered By <a href="https://hlz.ink" target="_blank">HLZ</a>
+        ©2020 <a href="https://hlz.ink" target="_blank">Haolin</a>
     </span>
 </footer>
-
-
-
 </html>

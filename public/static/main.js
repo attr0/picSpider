@@ -1,3 +1,5 @@
+Url = 'https://hk.20021110.xyz';
+
 /* 
     method
     url
@@ -78,6 +80,7 @@ function $(obj) {
 // fatalError: 致命错误
 
 
+
 /*
  *	检查当前表单是否合法
  */
@@ -115,7 +118,7 @@ function subm(){
     $('loading').style.display = 'flex';
     $ajax({
         method: "get",
-        url: "https://hk.20021110.xyz/api.php",
+        url: Url+"/api.php",
         data: {
             id: $("inputID").value,
             t: $("inputType").options[$("inputType").selectedIndex].value
@@ -149,3 +152,34 @@ function acopy(copyTxt)
     alert('复制成功')
 }
 
+
+function init()
+{
+    let a, r;
+    $ajax({
+        method: "get",
+        url: Url + "/api.php",
+        data: {
+            id: "all",
+            t: "pc"
+        },
+        // 后端返回 JOSON
+        // 1. sus 是否成功插入
+        // 2. message 插入成功后的信息
+        success: function(result) {
+            $('loading').style.display = 'none';
+            r = result;
+            a = JSON.parse(result);
+            a.s = parseInt(a.s)
+
+            // AID = a.s;
+            a.s = parseInt( Math.random()*a.s + 1 );
+
+            $('outter').style.backgroundImage = "url(" + Url + '/picture/pc/' + a.s.toString() + '.webp)';
+            $('inputID').value = a.s;
+        },
+        error: function(msg) {
+            console.log(msg)
+        }
+    })
+}
